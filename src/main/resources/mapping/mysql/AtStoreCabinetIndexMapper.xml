@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tietie.dao.AtStoreCabinetIndexMapper" >
+  <resultMap id="BaseResultMap" type="com.tietie.model.AtStoreCabinetIndex" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="event_detail_id" property="eventDetailId" jdbcType="INTEGER" />
+    <result column="event_title" property="eventTitle" jdbcType="VARCHAR" />
+    <result column="event_level" property="eventLevel" jdbcType="INTEGER" />
+    <result column="event_state" property="eventState" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, event_detail_id, event_title, event_level, event_state, create_time, 
+    modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from at_store_cabinet_index
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from at_store_cabinet_index
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tietie.model.AtStoreCabinetIndex" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into at_store_cabinet_index (id, user_id, event_detail_id, 
+      event_title, event_level, event_state, 
+      create_time, modify_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{eventDetailId,jdbcType=INTEGER}, 
+      #{eventTitle,jdbcType=VARCHAR}, #{eventLevel,jdbcType=INTEGER}, #{eventState,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tietie.model.AtStoreCabinetIndex" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into at_store_cabinet_index
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="eventDetailId != null" >
+        event_detail_id,
+      </if>
+      <if test="eventTitle != null" >
+        event_title,
+      </if>
+      <if test="eventLevel != null" >
+        event_level,
+      </if>
+      <if test="eventState != null" >
+        event_state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="eventDetailId != null" >
+        #{eventDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="eventTitle != null" >
+        #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="eventLevel != null" >
+        #{eventLevel,jdbcType=INTEGER},
+      </if>
+      <if test="eventState != null" >
+        #{eventState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tietie.model.AtStoreCabinetIndex" >
+    update at_store_cabinet_index
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="eventDetailId != null" >
+        event_detail_id = #{eventDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="eventTitle != null" >
+        event_title = #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="eventLevel != null" >
+        event_level = #{eventLevel,jdbcType=INTEGER},
+      </if>
+      <if test="eventState != null" >
+        event_state = #{eventState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tietie.model.AtStoreCabinetIndex" >
+    update at_store_cabinet_index
+    set user_id = #{userId,jdbcType=INTEGER},
+      event_detail_id = #{eventDetailId,jdbcType=INTEGER},
+      event_title = #{eventTitle,jdbcType=VARCHAR},
+      event_level = #{eventLevel,jdbcType=INTEGER},
+      event_state = #{eventState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
