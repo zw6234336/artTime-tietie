@@ -10,15 +10,15 @@ import com.tietie.model.AtStoreCabinetIndex;
  * 2017年1月6日
  */
 public interface AtStoreCabinetIndexMapper {
-    int deleteByPrimaryKey(Integer id);
+    public int deleteByPrimaryKey(Integer id);
 
-    int insert(AtStoreCabinetIndex record);
+    public int insert(AtStoreCabinetIndex record);
 
-    int insertSelective(AtStoreCabinetIndex record);
+    public int insertSelective(AtStoreCabinetIndex record);
 
-    AtStoreCabinetIndex selectByPrimaryKey(Integer id);
+    public AtStoreCabinetIndex selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(AtStoreCabinetIndex record);
+    public int updateByPrimaryKeySelective(AtStoreCabinetIndex record);
 
-    int updateByPrimaryKey(AtStoreCabinetIndex record);
+    public int updateByPrimaryKey(AtStoreCabinetIndex record);
 }
